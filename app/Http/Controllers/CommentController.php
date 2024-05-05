@@ -28,4 +28,10 @@ class CommentController extends Controller
             'comment' => $comment,
         ]);
     }
+
+    
+    function comment_delete($id){
+        Comment::find($id)->delete();
+        return back()->with('delete', 'Comment deleted!');
+    }
 }

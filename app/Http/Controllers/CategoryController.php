@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
     function category(){
-        $categories = Category::all();
+        $categories = Category::paginate(5);
         return view('dashboard.category.category',[
             'categories' => $categories,
         ]);

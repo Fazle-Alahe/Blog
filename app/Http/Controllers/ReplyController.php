@@ -57,4 +57,9 @@ class ReplyController extends Controller
             'reply' => $reply,
         ]);
     }
+
+    function reply_delete($id){
+        Reply::find($id)->delete();
+        return back()->with('delete', 'Reply deleted!');
+    }
 }

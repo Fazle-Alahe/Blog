@@ -7,7 +7,7 @@
                 <h3>All comments</h3>
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
+                <table class="table table-bordered text-center">
                     <tr>
                         <th>SL</th>
                         <th>Comment</th>
@@ -19,7 +19,8 @@
                             <td class="text-black text-wrap">{{$comment->comment}}</td>
                             <td>
                                 <a href="{{route('comment.view',$comment->id)}}" class="btn btn-info">Comment View</a>    
-                                <a href="{{route('single.blog',$comment->rel_to_blog->slug)}}" class="btn btn-success">Blog View</a>    
+                                <a href="{{route('single.blog',$comment->rel_to_blog->slug)}}" class="btn btn-success">Blog View</a>  
+                                <a href="{{route('comment.delete',$comment->id)}}" class="btn btn-danger"><i class="bx bx-trash"></i></a>      
                             </td>
                         </tr>
                     @endforeach
@@ -34,7 +35,7 @@
                 <h3>All replies</h3>
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
+                <table class="table table-bordered text-center">
                     <tr>
                         <th>SL</th>
                         <th>Reply</th>
@@ -43,10 +44,11 @@
                     @foreach (App\Models\Reply::where('blogger_id', Auth::user()->id)->latest()->get() as $sl=>$reply)
                         <tr style="{{$reply->status == 0?'background-color: rgb(186, 182, 179);':''}}">
                             <td class="text-black">{{$sl+1}}</td>
-                            <td class="text-black text-wrap">{{$reply->reply}}</td>
+                            <td class="text-black text-wrap" style="width: 320px">{{$reply->reply}}</td>
                             <td>
                                 <a href="{{route('reply.view',$reply->id)}}" class="btn btn-info">Reply View</a>    
                                 <a href="{{route('single.blog',$reply->rel_to_blog->slug)}}" class="btn btn-success">View</a>    
+                                <a href="{{route('reply.delete',$reply->id)}}" class="btn btn-danger"><i class="bx bx-trash"></i></a>    
                             </td>
                         </tr>
                     @endforeach
@@ -63,7 +65,7 @@
                     <h3>Pending Posts</h3>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered text-center">
                         <tr>
                             <th>SL</th>
                             <th>Thumbnail</th>
@@ -102,7 +104,7 @@
                 <h3>Unread messages</h3>
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
+                <table class="table table-bordered text-center">
                     <tr>
                         <th>SL</th>
                         <th>Name</th>

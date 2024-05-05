@@ -165,8 +165,8 @@
                                         </div>
                                         <form action="{{route('store.child.reply',$reply->id)}}" method="POST">
                                             @auth('viewer')
-                                            <div class="modal-body">
-                                                    @csrf
+                                                <div class="modal-body">
+                                                        @csrf
                                                     <input type="hidden" name="comment_id" value="{{$comment->id}}">
                                                     <input type="hidden" name="blogger_id" value="{{$blog->blogger_id}}">
                                                     <input type="hidden" name="post_id" value="{{$blog->id}}">
@@ -179,10 +179,10 @@
                                                             <strong class="text-danger">{{$message}}</strong>
                                                         @enderror
                                                     </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn btn-default">Reply</button>
-                                            </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-default">Reply</button>
+                                                </div>
                                             @else
                                                 <h4 class="text-center">For reply,You've to <a href="{{route('login.viewer')}}">Login</a> first.</h4>
     
@@ -193,58 +193,58 @@
                             </div>
                     </div>
                     @foreach (App\Models\Reply::where('comment_id', $comment->id)->where('parent_reply', $reply->id)->get() as $child_reply )
-                    <li class="comment child rounded" style="padding-left: 100px">
-                        <div class="thumb">
-                            @if ($child_reply->rel_to_viewer->photo == null)
-                                <img width="60" src="{{asset('uploads/profile_default.PNG')}}">
-                            @else
-                                <img src="{{asset('uploads/viewer/')}}/{{$child_reply->rel_to_viewer->photo}}" alt="post-title" class="comment_circle"/>
-                            @endif
-                        </div>
-                        <div class="details">
-                            <h4 class="name"><a>{{$child_reply->rel_to_viewer->name}}</a></h4>
-                            <span class="date">{{$child_reply->created_at->toFormattedDateString()}}&nbsp;&nbsp;&nbsp; {{$child_reply->created_at->diffForHumans()}}</span>
-                            <p>{{$child_reply->reply}}</p>
-                            <a href="#" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{$child_reply->id}}">Reply</a>
-                            
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal{{$child_reply->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Reply to:-&nbsp;{{$child_reply->rel_to_viewer->name}}</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <form action="{{route('store.child.reply',$reply->id)}}" method="POST">
-                                                @auth('viewer')
-                                                <div class="modal-body">
-                                                        @csrf
-                                                        <input type="hidden" name="comment_id" value="{{$comment->id}}">
-                                                        <input type="hidden" name="blogger_id" value="{{$blog->blogger_id}}">
-                                                        <input type="hidden" name="post_id" value="{{$blog->id}}">
-                                                        <input type="hidden" name="commentor_id" value="{{Auth::guard('viewer')->user()->id}}">
-    
-                                                        <div class="mb-3">
-                                                            <label for="message-text" class="col-form-label">Message:</label>
-                                                            <textarea class="form-control" id="message-text" name="child_reply"></textarea>
-                                                            @error('child_reply')
-                                                                <strong class="text-danger">{{$message}}</strong>
-                                                            @enderror
-                                                        </div>
+                        <li class="comment child rounded" style="padding-left: 100px">
+                            <div class="thumb">
+                                @if ($child_reply->rel_to_viewer->photo == null)
+                                    <img width="60" src="{{asset('uploads/profile_default.PNG')}}">
+                                @else
+                                    <img src="{{asset('uploads/viewer/')}}/{{$child_reply->rel_to_viewer->photo}}" alt="post-title" class="comment_circle"/>
+                                @endif
+                            </div>
+                            <div class="details">
+                                <h4 class="name"><a>{{$child_reply->rel_to_viewer->name}}</a></h4>
+                                <span class="date">{{$child_reply->created_at->toFormattedDateString()}}&nbsp;&nbsp;&nbsp; {{$child_reply->created_at->diffForHumans()}}</span>
+                                <p>{{$child_reply->reply}}</p>
+                                <a href="#" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{$child_reply->id}}">Reply</a>
+                                
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal{{$child_reply->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Reply to:-&nbsp;{{$child_reply->rel_to_viewer->name}}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-default">Reply</button>
-                                                </div>
-                                                @else
-                                                    <h4 class="text-center">For reply,You've to <a href="{{route('login.viewer')}}">Login</a> first.</h4>
+                                                <form action="{{route('store.child.reply',$reply->id)}}" method="POST">
+                                                    @auth('viewer')
+                                                    <div class="modal-body">
+                                                            @csrf
+                                                            <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                                            <input type="hidden" name="blogger_id" value="{{$blog->blogger_id}}">
+                                                            <input type="hidden" name="post_id" value="{{$blog->id}}">
+                                                            <input type="hidden" name="commentor_id" value="{{Auth::guard('viewer')->user()->id}}">
         
-                                                @endauth
-                                            </form>
+                                                            <div class="mb-3">
+                                                                <label for="message-text" class="col-form-label">Message:</label>
+                                                                <textarea class="form-control" id="message-text" name="child_reply"></textarea>
+                                                                @error('child_reply')
+                                                                    <strong class="text-danger">{{$message}}</strong>
+                                                                @enderror
+                                                            </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-default">Reply</button>
+                                                    </div>
+                                                    @else
+                                                        <h4 class="text-center">For reply,You've to <a href="{{route('login.viewer')}}">Login</a> first.</h4>
+            
+                                                    @endauth
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                        </div>
-                    </li>
+                            </div>
+                        </li>
                     @endforeach
                 </li>
                 @endforeach

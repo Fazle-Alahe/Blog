@@ -11,10 +11,10 @@
                         <a href="{{route('trash.tag')}}" class="btn btn-primary"><i class="bx bx-menu"></i>Trash tag list</a>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered text-center">
                             <tr>
                                 <th>
-                                    <div class="mb-3">
+                                    <div class="mb-3" style="width: 20px">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="chkSelectAll">
                                             <label class="form-check-label">

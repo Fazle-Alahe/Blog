@@ -13,10 +13,10 @@
                         <a href="{{route('trash.category')}}" class="btn btn-primary"><i class="bx bx-menu"></i>Trash Category</a>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered text-center">
                         <tr>
                             <th>
-                                <div class="mb-3">
+                                <div class="mb-3" style="width: 50px">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="chkSelectAll">
                                         <label class="form-check-label">
@@ -69,7 +69,11 @@
                         </div>
                     @endcan
                 </div>
-            </div></form>
+            </div>
+        </form>
+    </div>
+    <div class="mt-3">
+        {{$categories->links()}}
     </div>
     
     @can('category_add')

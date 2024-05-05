@@ -15,10 +15,10 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered text-center">
                         <tr>
                             <th>
-                                <div class="mb-3">
+                                <div class="mb-3" style="width: 50px">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="chkSelectAll">
                                         <label class="form-check-label">

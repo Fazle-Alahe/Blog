@@ -9,7 +9,7 @@
                 <h3>Blogger list</h3>
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
+                <table class="table table-bordered text-center">
                     <tr>
                         <th>Name</th>
                         <th>Role</th>

@@ -206,10 +206,12 @@ Route::middleware('auth')->group(function () {
 
 // Comments
 Route::post('/store/comment/{id}', [CommentController::class, 'store_comment'])->name('store.comment');
+Route::get('/comment/delete/{id}', [CommentController::class, 'comment_delete'])->name('comment.delete');
 
 // Reply
 Route::post('/store/reply/{id}', [ReplyController::class, 'store_reply'])->name('store.reply');
 Route::post('/store/child/reply/{id}', [ReplyController::class, 'store_child_reply'])->name('store.child.reply');
+Route::get('/reply/delete/{id}', [ReplyController::class, 'reply_delete'])->name('reply.delete');
 
 Route::middleware('auth')->group(function () {
     Route::get('/reply/view/{id}', [ReplyController::class, 'reply_view'])->name('reply.view');
