@@ -13,7 +13,7 @@ class RoleController extends Controller
     function role_manage(){
         $permissions = Permission::all();
         $role = Role::all();
-        $users = User::all();
+        $users = User::paginate(5);
         return view('dashboard.role.role_manage',[
             'permissions' => $permissions,
             'role' => $role,

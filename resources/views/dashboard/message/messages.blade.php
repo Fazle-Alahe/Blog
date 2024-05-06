@@ -42,7 +42,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{$sl+1}}</td>
+                                <td>{{$messages->firstitem()+$sl}}</td>
                                 <td>{{$message->name}}</td>
                                 <td>{{$message->email}}</td>
                                 <td>{{$message->title}}</td>
@@ -59,6 +59,7 @@
                     </div>
                 </div>
             </form>
+            {{$messages->links()}}
         </div>
     </div>
 </div>

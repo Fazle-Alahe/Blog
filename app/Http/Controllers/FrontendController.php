@@ -57,7 +57,7 @@ class FrontendController extends Controller
     }
 
     function show_message(){
-        $messages = Message::all();
+        $messages = Message::paginate(10);
         return view('dashboard.message.messages',[
             'messages' => $messages,
         ]);

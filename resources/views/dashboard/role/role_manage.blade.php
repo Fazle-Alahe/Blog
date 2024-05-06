@@ -11,13 +11,15 @@
             <div class="card-body">
                 <table class="table table-bordered text-center">
                     <tr>
+                        <th>SL</th>
                         <th>Name</th>
                         <th>Role</th>
                         <th>Action</th>
                     </tr>
 
-                    @foreach ($users as $user)
+                    @foreach ($users as $sl=>$user)
                         <tr>
+                            <td>{{$users->firstitem()+$sl}}</td>
                             <td>{{$user->name}}</td>
                             <td class="text-wrap">
                                 @forelse ($user->getRoleNames() as $roles)
@@ -34,6 +36,7 @@
                         </tr>
                     @endforeach
                 </table>
+                {{ $users->links() }}
             </div>
         </div>
         <div class="card mt-5">

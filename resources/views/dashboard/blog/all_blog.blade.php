@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{$sl+1}}</td>
+                                <td>{{$blogs->firstitem()+$sl}}</td>
                                 <td>
                                     <img src="{{asset('uploads/blog/')}}/{{$blog->thumbnail}}" width="150" alt="">
                                 </td>
@@ -75,6 +75,7 @@
                 </div>
             </div>
         </form>
+        {{$blogs->links()}}
     </div>
 </div>
 @else

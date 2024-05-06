@@ -42,7 +42,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{$sl+1}}</td>
+                                <td>{{$categories->firstitem()+$sl}}</td>
                                 <td>{{$category->category_name}}</td>
                                 <td>
                                     @if ($category->icon == null)
@@ -71,8 +71,6 @@
                 </div>
             </div>
         </form>
-    </div>
-    <div class="mt-3">
         {{$categories->links()}}
     </div>
     

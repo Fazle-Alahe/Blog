@@ -62,8 +62,8 @@ class HomeController extends Controller
         
         $popular = Blog::where('status', 0)->orderBy('view', 'DESC')->take(15)->get();
         $views = Blog::where('status', 0)->where('blogger_id', Auth::user()->id)->sum('view');
-        $blogs = Blog::where('blogger_id', Auth::user()->id)->where('status', 0)->latest()->paginate(2);
-        $p_blogs = Blog::where('blogger_id', Auth::user()->id)->where('status', 1)->latest()->get();
+        $blogs = Blog::where('blogger_id', Auth::user()->id)->where('status', 0)->latest()->paginate(5);
+        $p_blogs = Blog::where('blogger_id', Auth::user()->id)->where('status', 1)->latest()->paginate(5);
 
         // $blog = Blog::where('status', 1)->latest()->get();
         // die;

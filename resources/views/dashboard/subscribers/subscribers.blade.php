@@ -40,7 +40,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{$sl+1}}</td>
+                                <td>{{$subscribers->firstitem()+$sl}}</td>
                                 <td>{{$subscriber->email}}</td>
                                 @can('subscriber_action')
                                     <td>
@@ -62,6 +62,7 @@
                 </div>
             </div>
         </form>
+        {{ $subscribers->links() }}
     </div>
 </div>
 @else

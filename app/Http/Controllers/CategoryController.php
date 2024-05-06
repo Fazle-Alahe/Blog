@@ -107,7 +107,7 @@ class CategoryController extends Controller
 
     
     function trash_category(){
-        $trash_category = Category::onlyTrashed()->get();
+        $trash_category = Category::onlyTrashed()->paginate(5);
         return view('dashboard.category.trash_category',[
             'trash_category' => $trash_category,
         ]);

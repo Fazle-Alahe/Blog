@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     function user_list(){
-        $users = User::all();
+        $users = User::paginate(5);
         return view('dashboard.user.user_list',[
             'users' => $users,
         ]);
@@ -248,7 +248,7 @@ class UserController extends Controller
     }
 
     function trash_user(){
-        $trash_user = User::onlyTrashed()->get();
+        $trash_user = User::onlyTrashed()->paginate(5);
         return view('dashboard.user.trash_delete',[
             'trash_user' => $trash_user,
         ]);

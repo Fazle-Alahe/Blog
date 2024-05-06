@@ -158,12 +158,12 @@ foreach($trending as $blog){
                                         </tr>
                                         @foreach ($blogs as $sl=>$blog)
                                             <tr>
-                                                <td>{{$sl+1}}</td>
+                                                <td>{{$blogs->firstitem()+$sl}}</td>
                                                 <td>
                                                     <img width="50" src="{{asset('uploads/blog/')}}/{{$blog->thumbnail}}" alt="">
                                                 </td>
                                                 <td>{{$blog->rel_to_category->category_name}}</td>
-                                                <td>{{$blog->title}}</td>
+                                                <td>{{Str::limit($blog->title,40,'...')}}</td>
                                                 <td>
                                                     <a href="{{route('single.blog',$blog->slug)}}" class="btn btn-primary">View</a>
                                                 </td>
@@ -172,10 +172,9 @@ foreach($trending as $blog){
                                     </table>
                                 </div>
                             </div>
+                            {{ $blogs->links() }}
                         </div>
 
-                        
-                            {{ $blogs->links() }}
                         <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-header">
@@ -191,7 +190,7 @@ foreach($trending as $blog){
                                         </tr>
                                         @foreach ($p_blogs as $sl=>$blog)
                                             <tr>
-                                                <td>{{$sl+1}}</td>
+                                                <td>{{$p_blogs->firstitem()+$sl}}</td>
                                                 <td>
                                                     <img width="50" src="{{asset('uploads/blog/')}}/{{$blog->thumbnail}}" alt="">
                                                 </td>
@@ -202,6 +201,7 @@ foreach($trending as $blog){
                                     </table>
                                 </div>
                             </div>
+                            {{ $p_blogs->links() }}
                         </div>
                         <!-- end col -->
                     </div>

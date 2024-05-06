@@ -38,7 +38,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{$sl+1}}</td>
+                                    <td>{{$tags->firstitem()+$sl}}</td>
                                     <td>{{$tag->tag_name}}</td>
                                     @can('tag_action')
                                         <td>
@@ -56,6 +56,7 @@
                     </div>
                 </div>
             </form>
+            {{ $tags->links() }}
         </div>
             <div class="col-lg-4">
                 <div class="card">
@@ -80,7 +81,6 @@
                 </div>
             </div>
     </div>
-    {{ $tags->links() }}
     @endcan
 @endsection
 

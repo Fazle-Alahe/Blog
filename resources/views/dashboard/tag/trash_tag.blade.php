@@ -39,7 +39,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{$sl+1}}</td>
+                                <td>{{$trash_tag->firstitem()+$sl}}</td>
                                 <td>{{$tag->tag_name}}</td>
                                 @can('trash_tag_action')
                                     <td>
@@ -63,6 +63,7 @@
                 </div>
             </div>
         </form>
+        {{$trash_tag->links()}}
     </div>
 </div>
 @endcan

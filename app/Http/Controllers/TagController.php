@@ -45,7 +45,7 @@ class TagController extends Controller
     }
 
     function trash_tag(){
-        $trash_tag = Tag::onlyTrashed()->get();
+        $trash_tag = Tag::onlyTrashed()->paginate(5);
         return view('dashboard.tag.trash_tag',[
             'trash_tag' => $trash_tag,
         ]);

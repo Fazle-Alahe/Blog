@@ -41,7 +41,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{$sl+1}}</td>
+                                <td>{{$trash_category->firstitem()+$sl}}</td>
                                 <td>{{$category->category_name}}</td>
                                 <td>
                                     @if ($category->icon == null)
@@ -71,6 +71,7 @@
                     @endcan
                 </div>
             </form>
+            {{$trash_category->links()}}
         </div>
     </div>
 </div>

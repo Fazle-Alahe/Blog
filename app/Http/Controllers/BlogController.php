@@ -70,7 +70,7 @@ class BlogController extends Controller
     }
 
     function all_blog(){
-        $blogs = Blog::where('deleted_at', '=', Null)->latest()->get();
+        $blogs = Blog::where('deleted_at', '=', Null)->latest()->paginate(10);
         return view('dashboard.blog.all_blog',[
             'blogs' => $blogs,
         ]);
@@ -170,18 +170,7 @@ class BlogController extends Controller
 
     function trash_blog(){
         // $cat = Category::onlyTrashed()->get();
-        $blogs = Blog::onlyTrashed()->get();
-
-        // $all ='';
-        
-        // foreach($cat as $cats){
-        //     $all.=$cats->id;
-        // }
-
-        // $explode = explode(',',$all);
-
-        // Blog::find($explode);
-        // $blogs = Blog::onlyTrashed()->where('category_id', $explode)->get();
+        $blogs = Blog::onlyTrashed()->paginate(5);
 
         return view('dashboard.blog.trash_blog',[
             'blogs' => $blogs,

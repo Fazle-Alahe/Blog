@@ -21,7 +21,7 @@ class SubscriberController extends Controller
     }
 
     function subscriber_list(){
-        $subscribers = Subscriber::all();
+        $subscribers = Subscriber::paginate(10);
         return view('dashboard.subscribers.subscribers',[
             'subscribers' => $subscribers,
         ]);

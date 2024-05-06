@@ -41,7 +41,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{$sl+1}}</td>
+                                <td>{{$trash_user->firstitem()+$sl}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>
@@ -71,6 +71,7 @@
                         </div>
                     @endcan
                 </div>
+                {{ $trash_user->links() }}
             </div>
         </form>
     </div>
