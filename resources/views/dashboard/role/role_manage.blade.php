@@ -44,11 +44,11 @@
                 <h3>Role list</h3>
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
+                <table class="table table-bordered text-center">
                     <tr>
                         <th>Role</th>
                         <th>Permissions</th>
-                        <th>Action</th>
+                        <th style="width: 120px !important">Action</th>
                     </tr>
 
                     @foreach ($role as $roles)

@@ -250,7 +250,7 @@ $breads = Request::segments();
 										  </div>
 									   </a>
 									</div>
-									<div class="details clearfix ms-4 w-100">
+									<div class="details ms-4 w-100">
 									   <h6 class="post-title my-0"><a href="{{route('single.blog',$blog->slug)}}">{{$blog->title}}</a></h6>
 									   <ul class="meta list-inline mt-1 mb-0">
 										  <li class="list-inline-item">{{$blog->created_at->toFormattedDateString()}}</li>

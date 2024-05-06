@@ -1336,7 +1336,7 @@ section {
   font-size: 15px;
 }
 .post.post-list-sm:after {
-  content: "";
+  /* content: ""; */
   display: block;
   height: 1px;
   margin-bottom: 20px;

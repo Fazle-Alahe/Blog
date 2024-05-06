@@ -44,7 +44,7 @@
                     @foreach (App\Models\Reply::where('blogger_id', Auth::user()->id)->latest()->get() as $sl=>$reply)
                         <tr style="{{$reply->status == 0?'background-color: rgb(186, 182, 179);':''}}">
                             <td class="text-black">{{$sl+1}}</td>
-                            <td class="text-black text-wrap" style="width: 320px">{{$reply->reply}}</td>
+                            <td class="text-black text-wrap">{{Str::limit($reply->reply,60,'...')}}</td>
                             <td>
                                 <a href="{{route('reply.view',$reply->id)}}" class="btn btn-info">Reply View</a>    
                                 <a href="{{route('single.blog',$reply->rel_to_blog->slug)}}" class="btn btn-success">View</a>    
@@ -78,7 +78,7 @@
                             <tr style="{{$blog->status == 1?'background-color: rgb(186, 182, 179);':''}}">
                                 <td class="text-black">{{$sl+1}}</td>
                                 <td>
-                                    <img src="{{asset('uploads/blog/')}}/{{$blog->thumbnail}}" width="150" alt="">
+                                    <img src="{{asset('uploads/blog/')}}/{{$blog->thumbnail}}" width="100" alt="">
                                 </td>
                                 <td class="text-black">{{$blog->blogger}}</td>
                                 <td class="text-black">{{$blog->rel_to_category->category_name}}</td>
