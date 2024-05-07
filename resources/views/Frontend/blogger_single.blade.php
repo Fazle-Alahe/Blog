@@ -235,6 +235,13 @@ $about = App\Models\About::find(1);
             </div>
 		</div>
 	</section>
+	<nav>
+		<ul class="pagination justify-content-center">
+			<li class="page-item" aria-current="page">
+				{{$blogs->links()}}
+			</li>
+		</ul>
+	</nav>
 	<!-- footer -->
 	<footer>
 		<div class="container-xl">

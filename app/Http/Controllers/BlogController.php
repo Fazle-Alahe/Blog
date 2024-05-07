@@ -298,7 +298,7 @@ class BlogController extends Controller
                     $q->find($explode2);
                 });
             }
-        })->orderBy('id', 'DESC')->get();
+        })->orderBy('id', 'DESC')->paginate(10);
         // $blogs = Blog::where('status', 0)->orderBy('id', 'DESC')->get();
         return view('Frontend.all_blog',[
             'blogs' => $blogs,
@@ -308,7 +308,7 @@ class BlogController extends Controller
 
     function category_blogs($id){
         $category = Category::find($id);
-        $blogs = Blog::where('category_id', $id)->where('status', 0)->orderBy('id', 'DESC')->get();
+        $blogs = Blog::where('category_id', $id)->where('status', 0)->orderBy('id', 'DESC')->paginate(10);
         return view('Frontend.category_blog',[
             'category' =>$category,
             'blogs' =>$blogs,

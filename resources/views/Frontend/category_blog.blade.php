@@ -65,4 +65,11 @@
     </div>
     @endforeach
 </div>
+<nav>
+    <ul class="pagination justify-content-center">
+        <li class="page-item" aria-current="page">
+            {{$blogs->links()}}
+        </li>
+    </ul>
+</nav>
 @endsection

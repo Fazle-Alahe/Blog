@@ -73,11 +73,9 @@ $about = App\Models\About::find(1);
 </div>
 <nav>
     <ul class="pagination justify-content-center">
-        <li class="page-item active" aria-current="page">
-            <span class="page-link">1</span>
+        <li class="page-item" aria-current="page">
+            {{$blogs->links()}}
         </li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
     </ul>
 </nav>
 @endsection

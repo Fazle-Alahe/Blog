@@ -14,7 +14,7 @@ class BloggerController extends Controller
 
     function single_blogger($id){
         $user = User::find($id);
-        $blogs = Blog::where('status', 0)->where('blogger_id', $id)->get();
+        $blogs = Blog::where('status', 0)->where('blogger_id', $id)->paginate(9);
         return view('Frontend.blogger_single',[
             'user' => $user,
             'blogs' => $blogs,
