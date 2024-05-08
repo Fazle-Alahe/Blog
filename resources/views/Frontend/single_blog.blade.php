@@ -56,7 +56,7 @@
 
     <div class="about-author padding-30 rounded d-flex justify-content-between">
         <div class="">
-            <img style="width: 250px; height:120px; border-radius: 50%;" src="{{asset('uploads/users/')}}/{{$blog->rel_to_user->photo}}" />
+            <img style="width: 220px; height:120px; border-radius: 50%;" src="{{asset('uploads/users/')}}/{{$blog->rel_to_user->photo}}" />
         </div>
         <div class="details ms-4">
             <h4 class="name"><a href="{{route('single.blogger',$blog->blogger_id)}}">{{$blog->blogger}}</a></h4>

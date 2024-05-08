@@ -153,7 +153,7 @@ $about = App\Models\About::find(1);
     <section class="hero data-bg-image d-flex align-items-center" data-bg-image="{{asset('uploads/users/')}}/{{$user->photo}}">
         <div class="container-xl">
             <!-- call to action -->
-            <div class="cta text-center" >
+            <div class="cta text-center">
                 <h3 class="mt-0 mb-4" style="color: rgb(239, 227, 205) !important;">{{$user->name}}</h3>
                 <h4 class="mt-0 mb-4" style="color: rgb(239, 227, 205) !important;">{{$user->title}}</h4>
                 <p class="mt-0 mb-4">{{$user->desp}}</p>
