@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SubscriberMail;
 use App\Models\Subscriber;
+// use Intervention\Image\Facades\Image
+use Intervention\Image\Laravel\Facades\Image;;
 
 class BlogController extends Controller
 {
@@ -41,7 +43,7 @@ class BlogController extends Controller
         $photo = $request->photo;
         $extension = $photo->extension();
         $photo_name = Str::lower(str_replace(' ','-', $request->name.random_int(100000, 999999).'.'.$extension));
-        $photo->move(public_path('uploads/blog/'),$photo_name);
+        Image::read($photo)->resize(931,600)->save(public_path('uploads/blog/'.$photo_name));
 
         $blog_id = Blog::insertGetId([
             'blogger' =>$request->name,
@@ -57,8 +59,9 @@ class BlogController extends Controller
             'created_at' => Carbon::now(),
         ]);
 
-        $tag = implode(",",$request->tags);
-        $explode_tag = explode(',',$tag);
+        // $tag = implode(",",$request->tags);
+        // $explode_tag = explode(',',$tag);
+        $explode_tag = $request->tags;
         foreach($explode_tag as $tag){
             $pops = Tag::where('id', $tag)->first()->uses;
             Tag::find($tag)->update([
@@ -138,7 +141,7 @@ class BlogController extends Controller
             $photo = $request->photo;
             $extension = $photo->extension();
             $photo_name = Str::lower(str_replace(' ','-', $request->name.random_int(100000, 999999).'.'.$extension));
-            $photo->move(public_path('uploads/blog/'),$photo_name);
+            Image::read($photo)->resize(931,600)->save(public_path('uploads/blog/'.$photo_name));
 
             Blog::find($id)->update([
                 'blogger' =>$request->name,
@@ -162,6 +165,14 @@ class BlogController extends Controller
                 'description' => $request->desp,
                 'status' => 1,
                 'updated_at' => Carbon::now(),
+            ]);
+        }
+        
+        $explode_tag = $request->tags;
+        foreach($explode_tag as $tag){
+            $pops = Tag::where('id', $tag)->first()->uses;
+            Tag::find($tag)->update([
+                'uses' => $pops+1,
             ]);
         }
 

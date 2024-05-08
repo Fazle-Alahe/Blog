@@ -353,7 +353,7 @@ $breads = Request::segments();
 
 	<!-- logo -->
 	<div class="logo">
-		<img src="images/logo.svg" alt="Katen" />
+		<a class="navbar-brand" href="{{route('index')}}"><img width="150" src="{{asset('uploads/logo/')}}/{{$logo->logo}}" alt="logo" /></a> 
 	</div>
 
 	<!-- menu -->

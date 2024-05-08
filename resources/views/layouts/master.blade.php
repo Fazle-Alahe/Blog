@@ -28,7 +28,7 @@
 
 	<style>
 		.blg_circle{
-			height: 70px;
+			height: 65px;
 			width: 70px;
 			border-radius: 50%;
 		}

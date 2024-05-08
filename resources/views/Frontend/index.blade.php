@@ -120,7 +120,7 @@
          <div class="col-sm-6">
             <!-- post -->
             @foreach ($editors_right as $blog)
-               <div class="post post-list-sm square">
+               <div class="post post-list-sm square mb-3">
                   <div class="thumb rounded">
                      <a href="{{route('single.blog',$blog->slug)}}">
                         <div class="inner">

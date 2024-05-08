@@ -7,9 +7,6 @@
             <div class="card-header">
                 <h3>Update profile</h3>
             </div>
-            @if (session('success'))
-                <div class="alert alert-success">{{session('success')}}</div>
-            @endif
             <div class="card-body">
                 <form action="{{route('profile.update')}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -33,7 +30,7 @@
                         <label class="form-label">Photo</label>
                         <input class="form-control" type="file" name="photo" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
                         <div class="mt-2">
-                            <img width="100" src="{{asset('uploads/users/')}}/{{Auth::user()->photo}}" alt="">
+                            <img width="100" src="{{asset('uploads/users/')}}/{{Auth::user()->photo}}" id="blah">
                         </div>
                         @error('photo')
                             <strong class="text-danger">{{$message}}</strong>
@@ -53,9 +50,6 @@
             <div class="card-header">
                 <h3>Update password</h3>
             </div>
-            @if (session('pass_success'))
-                <div class="alert alert-success">{{session('pass_success')}}</div>
-            @endif
             <div class="card-body">
                 <form action="{{route('profile.pass.update')}}" method="POST">
                     @csrf
@@ -170,6 +164,49 @@
     </script>
 
     
+@if (session('success'))
+<script>
+    const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+    })
+
+    Toast.fire({
+    icon: 'success',
+    title: '{{session('success')}}'
+    })
+</script>
+@endif
+
+
+@if (session('pass_success'))
+<script>
+    const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+    })
+
+    Toast.fire({
+    icon: 'success',
+    title: '{{session('pass_success')}}'
+    })
+</script>
+@endif
+
 @if (session('about_update'))
 <script>
     const Toast = Swal.mixin({

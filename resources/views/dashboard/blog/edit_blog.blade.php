@@ -4,8 +4,11 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header text-center">
-                    <h3>Edit Blog</h3>
+                <div class="card-header d-flex justify-content-between">
+                    <h3 class="mr-auto p-2">Edit Blog</h3>
+                    <div class="p-2">
+                        <a href="{{route('all.blog')}}" class="btn btn-primary p-2"><i class="bx bx-menu"></i>Blog list</a>
+                    </div>
                 </div>
                 {{-- @if (session('success'))
                     <div class="alert alert-success">{{session('success')}}</div>

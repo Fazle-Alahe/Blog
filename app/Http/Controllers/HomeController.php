@@ -27,32 +27,25 @@ class HomeController extends Controller
             'password' => 'required',
         ]);
 
-        // $block = User::where('email', $request->email)->where('deleted_at')->exists();
-        // User::where()
-        // if(User::)
-        
-     $user_data = array(
-        'email'  => $request->email,
-        'password' => $request->password,
-       );
-    
-    //    if(User::where('email', $request->email)->where('deleted_at', !null)->exists()){
-    //     return back()->with('blocked', "You're blocked!!, please contact with ADMIN");
-    //    }
-    //     else{
-            if(Auth::attempt($user_data)){
+        if(User::where('email', $request->email)->exists()){
+            if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password])){
                 return redirect()->route('dashboard')->with('logged', "You're logged in!!");
             }
             else{
-                return back()->with('error', 'Wrong Login Details');
+                return back()->with('wrong', 'Wrong credential.');
+            }
         }
-    //    }
+        else{
+        
+            return back()->with('exists', 'Email does not exists.');
+        }
+    
 
     }
 
     function logout(){
         Auth::logout();
-        return redirect('login');
+        return redirect()->route('login');
 
     }
 

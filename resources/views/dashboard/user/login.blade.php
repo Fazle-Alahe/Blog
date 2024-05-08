@@ -68,11 +68,11 @@
                         <div class="card-body p-4">
     
                             <div class="text-center w-75 mx-auto auth-logo mb-4">
-                                <a class='logo-dark' href='index.html'>
+                                <a class='logo-dark'>
                                     <span><img src="{{asset('backend/assets')}}/images/logo-dark.png" alt="" height="22"></span>
                                 </a>
     
-                                <a class='logo-light' href='index.html'>
+                                <a class='logo-light'>
                                     <span><img src="{{asset('backend/assets')}}/images/logo-light.png" alt="" height="22"></span>
                                 </a>
                             </div>
@@ -93,6 +93,9 @@
                                     @error('password')
                                         <strong class="text-danger">{{ $message }}</strong>
                                     @enderror
+                                    @if (session('wrong'))
+                                        <strong class="text-danger">{{session('wrong')}}</strong>
+                                    @endif
                                 </div>
     
                                 <div class="form-group mb-0 text-center">
@@ -127,8 +130,8 @@
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
-   
-    @if (session('blocked'))
+{{--    
+    @if (session('wrong'))
     <script>
         const Toast = Swal.mixin({
         toast: true,
@@ -144,10 +147,10 @@
     
         Toast.fire({
         icon: 'success',
-        title: '{{session('blocked')}}'
+        title: '{{session('wrong')}}'
         })
     </script>
-    @endif
+    @endif --}}
 
     </body>
     

@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
-
+use Intervention\Image\Laravel\Facades\Image;
+// use Intervention\Image\Image;
 class UserController extends Controller
 {
     function user_list(){
@@ -42,8 +43,8 @@ class UserController extends Controller
                 $photo = $request->photo;
                 $extension = $photo->extension();
                 $photo_name = Str::lower(str_replace(' ','-', $request->name.random_int(100000, 999999).'.'.$extension));
-                $photo->move(public_path('uploads/users/'),$photo_name);
-                // Image::make($photo)->save(public_path('uploads/users/'.$photo_name));
+                Image::read($photo)->resize(931,600)->save(public_path('uploads/users/'.$photo_name));
+                // Image::make($photo)->resize(550, 350)->save(public_path('uploads/users/'.$photo_name));
                 // Image::make($photo)->save(public_path('uploads/users/'.$photo_name));
 
                 User::insert([
@@ -97,8 +98,7 @@ class UserController extends Controller
             $photo_name = Str::lower(str_replace(' ','-', $request->name.random_int(100000, 999999).'.'.$extension));
             $photo->move(public_path('uploads/users/'),$photo_name);
             // Image::make($photo)->save(public_path('uploads/users/'.$photo_name));
-            // Image::make($photo)->save(public_path('uploads/users/'.$photo_name));
-
+            // Image::read($photo)->resize(500,500)->save(public_path('uploads/users/'.$file_name));
             User::find($id)->update([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -153,18 +153,20 @@ class UserController extends Controller
         ]);
         
         if($request->hasFile('photo')){
-            if($user->photo == null){
+            // if($user->photo == null){
 
-            }else{
-                $photo_delete = public_path('uploads/users/'.$user->photo);
-                unlink($photo_delete);
-            }
+            // }else{
+            //     $photo_delete = public_path('uploads/users/'.$user->photo);
+            //     unlink($photo_delete);
+            // }
 
 
             $photo = $request->photo;
             $extension = $photo->extension();
             $photo_name = Str::lower(str_replace(' ','-', $request->name.random_int(100000, 999999).'.'.$extension));
-            $photo->move(public_path('uploads/users/'),$photo_name);
+            // Image::read($photo)->resize(500,500)->save(public_path("uploads/users/"),$photo_name);
+            Image::read($photo)->resize(931,600)->save(public_path('uploads/users/'.$photo_name));
+
             // Image::make($photo)->save(public_path('uploads/users/'.$photo_name));
             // Image::make($photo)->save(public_path('uploads/users/'.$photo_name));
 
