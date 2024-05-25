@@ -222,3 +222,8 @@ Route::middleware('auth')->group(function () {
     // Notification
     Route::get('/notification', [ReplyController::class, 'notification'])->name('notification');
 });
+
+
+
+// API test
+Route::get('/cat/shoow/', [FrontendController::class, 'cat_show']);

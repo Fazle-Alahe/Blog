@@ -187,6 +187,7 @@ $contact = App\Models\About::find(1);
 					</div>
 		
 					<!-- Contact Form -->
+					{{-- <form action="http://127.0.0.1:8000/api/viewer/login" id="contact-form" class="contact-form" method="POST"> --}}
 					<form action="{{route('loggged.viewer')}}" id="contact-form" class="contact-form" method="POST">
 						@csrf
 						<div class="messages"></div>

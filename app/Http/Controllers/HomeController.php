@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Logo;
 use App\Models\Reply;
@@ -73,6 +74,10 @@ class HomeController extends Controller
     // Logo
 
     function logo(){
+        // $post = Blog::first();
+        //     $post->category->category_name;
+        // $category = Category::find(9);
+        // echo $category->posts;
         $logo = Logo::find(1);
         return view('dashboard.logo.logo',[
             'logo' => $logo,

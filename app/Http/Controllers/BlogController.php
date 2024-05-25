@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\SubscriberMail;
 use App\Models\Subscriber;
 // use Intervention\Image\Facades\Image
-use Intervention\Image\Laravel\Facades\Image;;
+use Intervention\Image\Laravel\Facades\Image;
 
 class BlogController extends Controller
 {

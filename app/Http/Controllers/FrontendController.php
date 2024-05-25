@@ -10,6 +10,18 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
+    function cat_show(){
+        $cat = file_get_contents('http://127.0.0.1:8000/api/get/category');
+        $product = file_get_contents('http://127.0.0.1:8000/api/get/product');
+        $categories = json_decode($cat);
+        $products = json_decode($product);
+        return view('apicat',[
+            'categories' => $categories,
+            'products' => $products,
+        ]);
+    }
+
+
     function index(){
         
         $blogs = Blog::where('status', 0)->orderBy('view', 'DESC')->take(4)->get();
@@ -24,6 +36,7 @@ class FrontendController extends Controller
 
         $category = Category::where('status', 0)->orderBy('view', 'DESC')->take(1)->first()->id;
         $cat_view = Blog::where('status', 0)->where('category_id', $category)->latest()->take(1)->get();
+        
         return view('frontend.index',[
             'blogs' => $blogs,
             'trending_left' => $trending_left,
@@ -58,9 +71,10 @@ class FrontendController extends Controller
 
     function show_message(){
         $messages = Message::paginate(10);
-        return view('dashboard.message.messages',[
-            'messages' => $messages,
-        ]);
+        return view('dashboard.message.messages', compact('messages',''));
+        // return view('return view('Frontend.index', compact('blogs'));',[
+        //     'messages' => $messages,
+        // ]);
     }
 
     function message_delete($id){

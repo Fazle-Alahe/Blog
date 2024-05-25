@@ -3176,4 +3176,16 @@ button:focus {
   }
 }
 
+/* arafat rony */
+.note-float-left{
+  margin-right: 20px !important;
+}
+.note-float-right{
+  margin-left: 20px !important;
+}
+
+.post-single p{
+  text-align: justify;
+}
+
 /*# sourceMappingURL=style.css.map */

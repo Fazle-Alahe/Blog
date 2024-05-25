@@ -187,7 +187,8 @@ $contact = App\Models\About::find(1);
 					</div>
 		
 					<!-- Contact Form -->
-					<form action="{{route('viewer.store')}}" id="contact-form" class="contact-form" method="POST" enctype="multipart/form-data">
+					{{-- <form action="{{route('viewer.store')}}" id="contact-form" class="contact-form" method="POST" enctype="multipart/form-data"> --}}
+					<form action="http://127.0.0.1:8000/api/registration" id="contact-form" class="contact-form" method="POST" enctype="multipart/form-data">
 						@csrf
 						<div class="messages"></div>
 						
