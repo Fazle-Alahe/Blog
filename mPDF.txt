@@ -1,0 +1,66 @@
+mPDF setup -->
+==> composer require carlos-meneses/laravel-mpdf
+
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Blog;
+use Illuminate\Http\Request;
+use Mpdf\Config\ConfigVariables;
+use Mpdf\Config\FontVariables;
+use Mpdf\Mpdf;
+
+class PdfController extends Controller
+{
+    function mpdf($id){
+        $blog = Blog::find($id);
+        // echo $blog->id;
+        $defaultConfig = (new ConfigVariables())->getDefaults();
+        $fontDirs = $defaultConfig['fontDir'];
+        $defaultFontConfig = (new FontVariables())->getDefaults();
+        $fontData = $defaultFontConfig['fontdata'];
+
+        $fontData['kalpurush'] = [
+            'R' => "kalpurush.ttf",
+            'B' => "kalpurush.ttf",
+            'I' => "kalpurush.ttf",
+            'BI' => "kalpurush.ttf",
+            'useOTL' => 0xFF,
+            'useKashida' => 75,
+        ];
+        // $fontData['ben'] = [
+        //     'R' => 'ben.ttf',
+        // ];
+
+        $customPaper = 'A4';
+
+        $mpdf = new Mpdf([
+            'mode' => 'UTF-8',
+            'autoScriptToLang' => true,
+            'autoLangToFont' => true,
+            'tempDir' => storage_path('app/mpdf'),
+            'fontDir' => array_merge($fontDirs, [public_path('fonts')]),
+            'fontdata' => $fontData,
+            'format' => $customPaper,
+        ]);
+        
+
+        $html = view('pdf',[
+            'blog' => $blog,
+        ])->render();
+        $mpdf->WriteHTML($html);
+
+        return response($mpdf->Output(), 200,[
+            'Content-Type' => 'application/pdf',
+        ]);
+    }
+}
+
+
+vendor->mpdf->mpdf->src->language->LanguageToFont.php
+=> case 'ben': // BENGALI; Bangla
+	$unifont = 'kalpurush';
+	break;
+
+
